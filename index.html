@@ -218,8 +218,8 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 </script>
 <script>
-const antiRaidUrl = "/.netlify/functions/statusProxy?bot=anti";
-const gestionUrl  = "/.netlify/functions/statusProxy?bot=gestion";
+const antiRaidUrl = "https://rare-courtesy.up.railway.app/status/anti";
+const gestionUrl  = "https://rare-courtesy.up.railway.app/status/gestion";
 
 async function fetchBotStatus(url, idPrefix) {
   const statusElem = document.getElementById(`bot-status-${idPrefix}`);
