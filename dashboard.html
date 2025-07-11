@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Dashboard SA Anti-Raid</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <h1>Dashboard</h1>
+  <form id="login-form">
+    <label>Email :</label>
+    <input type="email" id="email" required />
+    <button type="submit">Voir mes licences</button>
+  </form>
+
+  <div id="licenses" style="margin-top:20px;"></div>
+
+  <script>
+    document.getElementById("login-form").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const email = document.getElementById("email").value;
+      try {
+        const res = await fetch(`/api/licenses/${encodeURIComponent(email)}`);
+        const data = await res.json();
+        if (data.success) {
+          document.getElementById("licenses").innerHTML = `
+            <h3>Vos licences :</h3>
+            <ul>
+              ${data.licenses.map(lic => `<li>${lic}</li>`).join('')}
+            </ul>
+          `;
+        } else {
+          document.getElementById("licenses").innerHTML = `<p>${data.message}</p>`;
+        }
+      } catch (err) {
+        console.error(err);
+        document.getElementById("licenses").innerHTML = "<p>Erreur lors de la récupération des licences.</p>";
+      }
+    });
+  </script>
+</body>
+</html>

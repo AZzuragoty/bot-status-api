@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SA Anti-Raid</title>
+  <link rel="icon" href="pdptwitch.JPG" type="image/png" />
+  <link rel="stylesheet" href="style.css" />
+  <script defer src="faq-toggle.js"></script>
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" integrity="sha512-..." />
+</head>
+<body class="preload">
+<header class="header ">
+  <div class="container header-container">
+    <div class="logo">SA Anti-Raid</div>
+    <nav class="navbar">
+  <ul class="nav-list">
+    <li><a href="#">Accueil</a></li>
+    <li><a href="#features">Fonctionnalités</a></li>
+    <li><a href="#pricing">Tarifs</a></li>
+    <li><a href="#faq">FAQ</a></li>
+    <li><a href="dashboard.html">Dashboard</a></li>
+    <li><a href="https://discord.com/oauth2/authorize?client_id=1317447718020583485&scope=bot&permissions=8" target="_blank" rel="noopener" class="btn-nav">Ajouter le Bot</a></li>
+  </ul>
+  <div class="burger">
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+</nav>
+  </div>
+</header>
+
+<section id="hero" class="hero-section stagger">
+  <div class="container hero-content">
+    <h1 class="hero-title">Protégez votre serveur Discord contre les raids et attaques</h1>
+    <p class="hero-subtitle">SA Anti-Raid, le bot fiable pour une sécurité avancée, des alertes en temps réel et une protection automatique.</p>
+    <a href="https://discord.com/oauth2/authorize?client_id=1317447718020583485&scope=bot&permissions=8" target="_blank" rel="noopener" class="btn-primary">Ajouter le Bot Maintenant</a>
+    <a href="https://discord.gg/synnzo" target="_blank" rel="noopener" class="btn-primary">Serveur Support et communautaire</a>
+  </div>
+</section>
+
+
+<section id="features" class="features-section container scroll-animate">
+  <div class="feature-card">
+    <div class="feature-icon">🛡️</div>
+    <h3 class="feature-title">Protection Anti-Raid Avancée</h3>
+    <p class="feature-text">Détecte et bloque les attaques raid en temps réel pour sécuriser votre serveur.</p>
+  </div>
+  <div class="feature-card">
+    <div class="feature-icon">⚙️</div>
+    <h3 class="feature-title">Gestion des Permissions</h3>
+    <p class="feature-text">Contrôle granulaire des permissions pour éviter les abus et les accès non autorisés.</p>
+  </div>
+  <div class="feature-card">
+    <div class="feature-icon">📊</div>
+    <h3 class="feature-title">Logs & Alertes</h3>
+    <p class="feature-text">Recevez des rapports détaillés et des notifications instantanées en cas d'incident.</p>
+  </div>
+</section>
+
+
+<section id="pricing" class="pricing-section container  scroll-animate">
+  <h2 class="section-title">Nos offres pour votre serveur Discord</h2>
+  <div class="pricing-cards">
+    <article class="pricing-card">
+      <h3 class="pricing-name">Starter</h3>
+      <p class="pricing-price">Gratuit</p>
+      <ul class="pricing-features">
+        <li>Protection basique anti-raid</li>
+        <li>Support communautaire</li>
+      </ul>
+      <a href="https://discord.com/oauth2/authorize?client_id=1317447718020583485&scope=bot&permissions=8" target="_blank" rel="noopener" class="btn-secondary">Ajouter le bot</a>
+    </article>
+
+    <article class="pricing-card featured">
+      <h3 class="pricing-name">Premium</h3>
+      <p class="pricing-price">4.99€/mois</p>
+      <ul class="pricing-features">
+        <li>Serveurs illimités</li>
+        <li>Logs détaillés</li>
+        <li>Anti-nuke avancé</li>
+        <li>Support prioritaire</li>
+      </ul>
+      <a href="https://buy.stripe.com/test_cNi28t2EDdL5d4f4FF8ww00" class="btn-primary" id="checkout-button" target="_blank">Souscrire</a>
+    </article>
+
+    <article class="pricing-card">
+      <h3 class="pricing-name">Ultimate</h3>
+      <p class="pricing-price">9.99€/mois</p>
+      <ul class="pricing-features">
+        <li>Protection complète</li>
+        <li>Alertes temps réel</li>
+        <li>Audit sécurité personnalisé</li>
+      </ul>
+      <a href="#" class="btn-secondary">Contactez-nous</a>
+    </article>
+  </div>
+</section>
+
+<section id="bot-status" class="bot-status-section container scroll-animate">
+  <h2 class="section-title">Statut des Bots</h2>
+  <div class="bot-status-cards">
+    <div class="bot-status-card">
+      <h3>SA Anti-Raid</h3>
+      <p>Status : <span id="bot-status-anti"><span class="status-dot"></span> Chargement...</span></p>
+      <p>Serveurs : <span id="bot-guilds-anti"></span></p>
+      <p>Utilisateurs : <span id="bot-users-anti"></span></p>
+    </div>
+    <div class="bot-status-card">
+      <h3>Bot Gestion</h3>
+      <p>Status : <span id="bot-status-gestion"><span class="status-dot"></span> Chargement...</span></p>
+      <p>Serveurs : <span id="bot-guilds-gestion"></span></p>
+      <p>Utilisateurs : <span id="bot-users-gestion"></span></p>
+    </div>
+  </div>
+</section>
+
+<section id="faq" class="faq-section container scroll-animate">
+  <h2 class="section-title">Questions fréquentes</h2>
+
+  <div class="faq-item" tabindex="0">
+    <button class="faq-question" aria-expanded="false" aria-controls="faq1">
+      <i class="fab fa-discord" style="color: #7289DA; margin-right: 10px;"></i>
+      Qu’est-ce qui différencie votre bot Discord ?
+      <span class="faq-icon">+</span>
+    </button>
+    <div class="faq-answer" id="faq1">
+      Notre bot combine une protection anti-raid avancée, des alertes instantanées et une interface facile à utiliser.
+    </div>
+  </div>
+
+  <div class="faq-item" tabindex="0">
+    <button class="faq-question" aria-expanded="false" aria-controls="faq2">
+      <i class="fab fa-discord" style="color:#7289DA; margin-right: 10px;"></i>
+      Proposez-vous un accompagnement personnalisé ?
+      <span class="faq-icon">+</span>
+    </button>
+    <div class="faq-answer" id="faq2">
+      Oui, nous adaptons les configurations selon les besoins spécifiques de chaque serveur.
+    </div>
+  </div>
+
+  <div class="faq-item" tabindex="0">
+    <button class="faq-question" aria-expanded="false" aria-controls="faq3">
+      <i class="fab fa-discord" style="color:#7289DA; margin-right: 10px;"></i>
+      Quels sont les délais de mise en place ?
+      <span class="faq-icon">+</span>
+    </button>
+    <div class="faq-answer" id="faq3">
+      En général, le bot est opérationnel en quelques minutes, avec un support disponible 24/7.
+    </div>
+  </div>
+</section>
+
+<footer id="footer" class="footer scroll-animate">
+  <div class="container footer-container">
+    <div class="footer-logo">
+      <a href="#">SA Anti-Raid<span style="color: #7f5af0;">.</span></a>
+    </div>
+
+    <nav class="footer-nav scroll-animate">
+      <ul>
+        <li><a href="#">Accueil</a></li>
+        <li><a href="#features">Fonctionnalités</a></li>
+        <li><a href="#pricing">Tarifs</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ul>
+    </nav>
+
+    <div class="footer-social scroll-animate hi" style="font-size: 48px;">
+      <a href="https://discord.gg/synnzo" aria-label="Discord" target="_blank" rel="noopener" style="color: purple; margin-right: 20px;">
+        <i class="fab fa-discord"></i>
+      </a>
+      <a href="#" aria-label="GitHub" target="_blank" rel="noopener" style="color: #333; margin-right: 20px;">
+        <i class="fab fa-github"></i>
+      </a>
+      <a href="#" aria-label="Twitter" target="_blank" rel="noopener" style="color: #1DA1F2;">
+        <i class="fab fa-twitter"></i>
+      </a>
+    </div>
+
+    <div class="footer-links">
+      <a href="privacy.html">Politique de confidentialité</a> |
+      <a href="refund.html">Politique de remboursement</a> |
+      <a href="terms.html">Conditions d’utilisation</a> |
+      <a href="legal-notice.html">Mentions légales</a> |
+      <a href="cookies.html">Préférences cookies</a>
+    </div>
+  </div>
+
+  <div class="footer-bottom scroll-animate">
+    <p>© 2025 SA Anti-Raid. Tous droits réservés.</p>
+  </div>
+</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const faqButtons = document.querySelectorAll('.faq-question');
+
+  faqButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      const answer = button.nextElementSibling;
+      if (!answer) return;
+
+      const isOpen = button.getAttribute('aria-expanded') === 'true';
+      if (isOpen) {
+        button.setAttribute('aria-expanded', 'false');
+        answer.classList.remove('show');
+        button.querySelector('.faq-icon').textContent = '+';
+      } else {
+        button.setAttribute('aria-expanded', 'true');
+        answer.classList.add('show');
+        button.querySelector('.faq-icon').textContent = '−';
+      }
+    });
+  });
+});
+</script>
+<script>
+const antiRaidUrl = "/.netlify/functions/statusProxy?bot=anti";
+const gestionUrl  = "/.netlify/functions/statusProxy?bot=gestion";
+
+async function fetchBotStatus(url, idPrefix) {
+  const statusElem = document.getElementById(`bot-status-${idPrefix}`);
+  const guildsElem = document.getElementById(`bot-guilds-${idPrefix}`);
+  const usersElem  = document.getElementById(`bot-users-${idPrefix}`);
+  const statusDot  = statusElem?.querySelector('.status-dot');
+
+  if (!statusElem || !guildsElem || !usersElem || !statusDot) return;
+
+  try {
+    const response = await fetch(url, { cache: "no-store" });
+    if (!response.ok) throw new Error(`HTTP error: ${response.status}`);
+    const data = await response.json();
+
+    if (data.online) {
+      statusDot.className = 'status-dot status-online';
+      statusElem.childNodes[1].nodeValue = ' En ligne';
+      guildsElem.textContent = data.guilds ?? "-";
+      usersElem.textContent = data.users ?? "-";
+    } else {
+      statusDot.className = 'status-dot status-offline';
+      statusElem.childNodes[1].nodeValue = ' Hors ligne';
+      guildsElem.textContent = "-";
+      usersElem.textContent = "-";
+    }
+  } catch (error) {
+    statusDot.className = 'status-dot status-offline';
+    statusElem.childNodes[1].nodeValue = ' Impossible de contacter';
+    guildsElem.textContent = "-";
+    usersElem.textContent = "-";
+    console.error(`Erreur fetch status ${idPrefix}:`, error);
+  }
+}
+
+function updateAllStatuses() {
+  fetchBotStatus(antiRaidUrl, "anti");
+  fetchBotStatus(gestionUrl, "gestion");
+}
+
+window.addEventListener("DOMContentLoaded", () => {
+  updateAllStatuses();
+  setInterval(updateAllStatuses, 30000);
+});
+</script>
+<script>
+const burger = document.querySelector('.burger');
+const navList = document.querySelector('.nav-list');
+
+burger.addEventListener('click', () => {
+  burger.classList.toggle('active');
+  navList.classList.toggle('show');
+});
+
+window.addEventListener('resize', () => {
+  if(window.innerWidth > 768) {
+    burger.classList.remove('active');
+    navList.classList.remove('show');
+  }
+});
+</script>
+<script src="animations.js"></script>
+</body>
+</html>

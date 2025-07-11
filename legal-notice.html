@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Politique de confidentialité | SA Anti-Raid</title>
+  <link rel="icon" href="pdptwitch.JPG" type="image/png" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" />
+</head>
+<body>
+<header class="header">
+  <div class="container header-container">
+    <div class="logo">SA Anti-Raid</div>
+    <nav class="navbar">
+      <ul class="nav-list">
+        <li><a href="#">Accueil</a></li>
+        <li><a href="#features">Fonctionnalités</a></li>
+        <li><a href="#pricing">Tarifs</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="https://discord.com/oauth2/authorize?client_id=1317447718020583485&scope=bot&permissions=8" target="_blank" rel="noopener" class="btn-nav">Ajouter le Bot</a></li>
+      </ul>
+      <div class="burger">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    </nav>
+  </div>
+</header>
+    <main class="legal-box">
+        <h1>Mentions légales</h1>
+        <h2>Éditeur du site</h2>
+        <p>
+            SA Anti-Raid est édité par SA Anti-Raid, basé en France.  
+            Contact : <a href="mailto:synnzo.contact@gmail.com">synnzo.contact@gmail.com</a>
+        </p>
+
+        <h2>Hébergement</h2>
+        <p>
+            Le site est hébergé par Netlify, 610 22ND St Ste 315 San Francisco, CA, 94107-3163 United States.
+            Site web : <a href="https://www.netlify.com/">Site de netlify</a>
+        </p>
+
+        <h2>Responsabilité</h2>
+        <p>
+            Nous nous efforçons de fournir des informations précises mais ne garantissons pas 
+            l'absence d'erreurs. Pour tout problème, veuillez nous contacter.
+        </p>
+
+        <h2>Propriété intellectuelle</h2>
+        <p>
+            Le contenu de ce site est protégé. Toute reproduction est interdite sans accord préalable.
+        </p>
+    </main>
+
+<footer id="footer" class="footer scroll-animate">
+  <div class="container footer-container">
+    <div class="footer-logo">
+      <a href="#">SA Anti-Raid<span style="color: #7f5af0;">.</span></a>
+    </div>
+    <nav class="footer-nav">
+      <ul>
+        <li><a href="#">Accueil</a></li>
+        <li><a href="#features">Fonctionnalités</a></li>
+        <li><a href="#pricing">Tarifs</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ul>
+    </nav>
+    <div class="footer-social scroll-animate" style="font-size: 48px;">
+      <a href="https://discord.gg/synnzo" aria-label="Discord" target="_blank" rel="noopener" style="color: purple; margin-right: 20px;">
+        <i class="fab fa-discord"></i>
+      </a>
+      <a href="#" aria-label="GitHub" target="_blank" rel="noopener" style="color: #333; margin-right: 20px;">
+        <i class="fab fa-github"></i>
+      </a>
+      <a href="#" aria-label="Twitter" target="_blank" rel="noopener" style="color: #1DA1F2;">
+        <i class="fab fa-twitter"></i>
+      </a>
+    </div>
+    <div class="footer-links scroll-animate">
+      <a href="privacy.html">Politique de confidentialité</a> |
+      <a href="refund.html">Politique de remboursement</a> |
+      <a href="terms.html">Conditions d’utilisation</a> |
+      <a href="legal-notice.html">Mentions légales</a> |
+      <a href="cookies.html">Préférences cookies</a>
+    </div>
+  </div>
+  <div class="footer-bottom scroll-animate">
+    <p>© 2025 SA Anti-Raid. Tous droits réservés.</p>
+  </div>
+</footer>
+</body>
+<script>
+const burger = document.querySelector('.burger');
+const navList = document.querySelector('.nav-list');
+burger.addEventListener('click', () => {
+  burger.classList.toggle('active');
+  navList.classList.toggle('show');
+});
+window.addEventListener('resize', () => {
+  if(window.innerWidth > 768) {
+    burger.classList.remove('active');
+    navList.classList.remove('show');
+  }
+});
+</script>
+<script src="animations.js"></script>
+</html>

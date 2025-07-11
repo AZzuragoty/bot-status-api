@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Politique de confidentialité | SA Anti-Raid</title>
+  <link rel="icon" href="pdptwitch.JPG" type="image/png" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" />
+</head>
+<body>
+<header class="header">
+  <div class="container header-container">
+    <div class="logo">SA Anti-Raid</div>
+    <nav class="navbar">
+      <ul class="nav-list">
+        <li><a href="#">Accueil</a></li>
+        <li><a href="#features">Fonctionnalités</a></li>
+        <li><a href="#pricing">Tarifs</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="https://discord.com/oauth2/authorize?client_id=1317447718020583485&scope=bot&permissions=8" target="_blank" rel="noopener" class="btn-nav">Ajouter le Bot</a></li>
+      </ul>
+      <div class="burger">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    </nav>
+  </div>
+</header>
+    <main class="legal-box stagger">
+        <h1>Politique de confidentialité</h1>
+        <p>
+            Chez SA Anti-Raid, nous accordons une importance capitale à la protection de vos données personnelles.
+        </p>
+
+        <h2>Qui sommes-nous ?</h2>
+        <p>
+            SA Anti-Raid est un service développé par Synnzo, basé en France, joignable à l’adresse email : 
+            <a href="mailto:synnzo.contact@gmail.com">synnzo.contact@gmail.com</a>.
+        </p>
+
+        <h2>Données collectées</h2>
+        <ul>
+            <li>Informations nécessaires pour la gestion du paiement via Stripe (aucune donnée bancaire n’est stockée sur nos serveurs).</li>
+            <li>Logs liés à l’utilisation du bot (ID serveur Discord, ID utilisateur, événements de sécurité).</li>
+            <li>Cookies analytiques pour mesurer l’audience du site.</li>
+        </ul>
+
+        <h2>Finalité</h2>
+        <p>
+            Vos données sont utilisées uniquement pour fournir nos services, assurer leur sécurité, et vous contacter en cas de besoin.
+        </p>
+
+        <h2>Durée de conservation</h2>
+        <p>
+            Les logs sont conservés pendant 12 mois. Les données analytiques sont anonymisées et conservées selon les règles de Google Analytics.
+        </p>
+
+        <h2>Vos droits</h2>
+        <p>
+            Conformément au RGPD, vous disposez d’un droit d’accès, de rectification et de suppression de vos données.
+            Contactez-nous à <a href="mailto:synnzo.contact@gmail.com">synnzo.contact@gmail.com</a>.
+        </p>
+
+        <h2>Cookies</h2>
+        <p>
+            Vous pouvez gérer vos préférences <a href="/cookies.html">sur cette page</a>.
+        </p>
+
+        <h2>Contact</h2>
+        <p>
+            Pour toute question, écrivez-nous à <a href="mailto:synnzo.contact@gmail.com">synnzo.contact@gmail.com</a>.
+        </p>
+    </main>
+
+<footer id="footer" class="footer scroll-animate">
+  <div class="container footer-container">
+    <div class="footer-logo">
+      <a href="#">SA Anti-Raid<span style="color: #7f5af0;">.</span></a>
+    </div>
+    <nav class="footer-nav">
+      <ul>
+        <li><a href="#">Accueil</a></li>
+        <li><a href="#features">Fonctionnalités</a></li>
+        <li><a href="#pricing">Tarifs</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ul>
+    </nav>
+    <div class="footer-social scroll-animate" style="font-size: 48px;">
+      <a href="https://discord.gg/synnzo" aria-label="Discord" target="_blank" rel="noopener" style="color: purple; margin-right: 20px;">
+        <i class="fab fa-discord"></i>
+      </a>
+      <a href="#" aria-label="GitHub" target="_blank" rel="noopener" style="color: #333; margin-right: 20px;">
+        <i class="fab fa-github"></i>
+      </a>
+      <a href="#" aria-label="Twitter" target="_blank" rel="noopener" style="color: #1DA1F2;">
+        <i class="fab fa-twitter"></i>
+      </a>
+    </div>
+    <div class="footer-links scroll-animate">
+      <a href="privacy.html">Politique de confidentialité</a> |
+      <a href="refund.html">Politique de remboursement</a> |
+      <a href="terms.html">Conditions d’utilisation</a> |
+      <a href="legal-notice.html">Mentions légales</a> |
+      <a href="cookies.html">Préférences cookies</a>
+    </div>
+  </div>
+  <div class="footer-bottom scroll-animate">
+    <p>© 2025 SA Anti-Raid. Tous droits réservés.</p>
+  </div>
+</footer>
+</body>
+<script>
+const burger = document.querySelector('.burger');
+const navList = document.querySelector('.nav-list');
+burger.addEventListener('click', () => {
+  burger.classList.toggle('active');
+  navList.classList.toggle('show');
+});
+window.addEventListener('resize', () => {
+  if(window.innerWidth > 768) {
+    burger.classList.remove('active');
+    navList.classList.remove('show');
+  }
+});
+</script>
+<script src="animations.js"></script>
+</html>
