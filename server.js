@@ -25,7 +25,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.static(__dirname));
 
 // Proxy vers la vraie API
-app.get('/status/anti', async (req, res) => {
+app.get('/api/status/anti', async (req, res) => {
   try {
     const response = await fetch('http://51.75.118.18:20052/status');
     const data = await response.json();
@@ -35,7 +35,7 @@ app.get('/status/anti', async (req, res) => {
   }
 });
 
-app.get('/status/gestion', async (req, res) => {
+app.get('/api/status/gestion', async (req, res) => {
   try {
     const response = await fetch('http://147.135.213.131:20117/status');
     const data = await response.json();
@@ -44,7 +44,6 @@ app.get('/status/gestion', async (req, res) => {
     res.status(500).send({ online: false });
   }
 });
-
 
 // Route racine
 app.get("/", (req, res) => {
