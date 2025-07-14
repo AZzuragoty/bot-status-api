@@ -4,7 +4,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Dashboard Admin</title>
+  <link rel="icon" href="pdptwitch.JPG" type="image/png" />
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" integrity="sha512-..." />
 </head>
 <header class="header ">
   <div class="container header-container">
@@ -89,10 +91,12 @@
   <div class="footer-bottom scroll-animate">
     <p>© 2025 SA Anti-Raid. Tous droits réservés.</p>
   </div>
-  <script>
-    async function loadVisits() {
+<script>
+  const API_URL = "https://bot-status-api-3m4j.onrender.com";
+
+  async function loadVisits() {
     try {
-      const res = await fetch("/api/visits");
+      const res = await fetch(`${API_URL}/api/visits`);
       const data = await res.json();
       document.getElementById("visitsCount").textContent = `Il y a eu ${data.totalVisits} visites.`;
     } catch (err) {
@@ -101,57 +105,58 @@
     }
   }
   loadVisits();
-    async function loadStats() {
-      try {
-        const [clientsRes, licensesRes] = await Promise.all([
-          fetch("/api/stats/clients"),
-          fetch("/api/stats/licenses")
-        ]);
-        const clientsData = await clientsRes.json();
-        const licensesData = await licensesRes.json();
 
-        document.getElementById("totalClients").textContent = clientsData.total ?? "0";
+  async function loadStats() {
+    try {
+      const [clientsRes, licensesRes] = await Promise.all([
+        fetch(`${API_URL}/api/stats/clients`),
+        fetch(`${API_URL}/api/stats/licenses`)
+      ]);
+      const clientsData = await clientsRes.json();
+      const licensesData = await licensesRes.json();
 
-        const licensesContainer = document.getElementById("latestLicenses");
-        licensesContainer.innerHTML = licensesData.map(c =>
-          `<div>${c.email} - Licenses: ${c.licenses.join(", ")} <small>(${new Date(c.createdAt).toLocaleString()})</small></div>`
-        ).join("");
-      } catch (err) {
-        console.error(err);
-      }
+      document.getElementById("totalClients").textContent = clientsData.total ?? "0";
+
+      const licensesContainer = document.getElementById("latestLicenses");
+      licensesContainer.innerHTML = licensesData.map(c =>
+        `<div>${c.email} - Licenses: ${c.licenses.join(", ")} <small>(${new Date(c.createdAt).toLocaleString()})</small></div>`
+      ).join("");
+    } catch (err) {
+      console.error(err);
     }
+  }
 
-    async function loadStatus() {
-      try {
-        const [antiRes, gestionRes] = await Promise.all([
-          fetch("/api/status/anti"),
-          fetch("/api/status/gestion")
-        ]);
+  async function loadStatus() {
+    try {
+      const [antiRes, gestionRes] = await Promise.all([
+        fetch(`${API_URL}/api/status/anti`),
+        fetch(`${API_URL}/api/status/gestion`)
+      ]);
 
-        const antiData = await antiRes.ok ? await antiRes.json() : { online: false };
-        const gestionData = await gestionRes.ok ? await gestionRes.json() : { online: false };
+      const antiData = await antiRes.ok ? await antiRes.json() : { online: false };
+      const gestionData = await gestionRes.ok ? await gestionRes.json() : { online: false };
 
-        document.getElementById("statusAnti").innerHTML = antiData.online 
-          ? "<span class='status-online'>✅ En ligne</span>" 
-          : "<span class='status-offline'>❌ Hors ligne</span>";
+      document.getElementById("statusAnti").innerHTML = antiData.online 
+        ? "<span class='status-online'>✅ En ligne</span>" 
+        : "<span class='status-offline'>❌ Hors ligne</span>";
 
-        document.getElementById("statusGestion").innerHTML = gestionData.online 
-          ? "<span class='status-online'>✅ En ligne</span>" 
-          : "<span class='status-offline'>❌ Hors ligne</span>";
+      document.getElementById("statusGestion").innerHTML = gestionData.online 
+        ? "<span class='status-online'>✅ En ligne</span>" 
+        : "<span class='status-offline'>❌ Hors ligne</span>";
 
-      } catch (err) {
-        console.error(err);
-      }
+    } catch (err) {
+      console.error(err);
     }
+  }
 
-    function refresh() {
-      loadStats();
-      loadStatus();
-    }
+  function refresh() {
+    loadStats();
+    loadStatus();
+  }
 
-    refresh();
-    setInterval(refresh, 5000); // refresh toutes les 5 sec
-  </script>
+  refresh();
+  setInterval(refresh, 5000);
+</script>
 <script src="animations.js"></script>
 </body>
 </html>
