@@ -2,42 +2,156 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Dashboard SA Anti-Raid</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dashboard Admin</title>
+  <link rel="stylesheet" href="style.css">
 </head>
+<header class="header ">
+  <div class="container header-container">
+    <div class="logo">SA Anti-Raid</div>
+    <nav class="navbar">
+  <ul class="nav-list">
+    <li><a href="index.html">Accueil</a></li>
+    <li><a href="#features">Fonctionnalités</a></li>
+    <li><a href="#pricing">Tarifs</a></li>
+    <li><a href="#faq">FAQ</a></li>
+    <li><a href="https://discord.com/oauth2/authorize?client_id=1317447718020583485&scope=bot&permissions=8" target="_blank" rel="noopener" class="btn-nav">Ajouter le Bot</a></li>
+  </ul>
+  <div class="burger">
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+</nav>
+  </div>
+</header>
 <body>
-  <h1>Dashboard</h1>
-  <form id="login-form">
-    <label>Email :</label>
-    <input type="email" id="email" required />
-    <button type="submit">Voir mes licences</button>
-  </form>
+<section class="dashboard-container">
+  <h1 class="dashboard-title">📊 Dashboard Admin</h1>
 
-  <div id="licenses" style="margin-top:20px;"></div>
+  <div class="dashboard-grid">
+    <div class="dashboard-card">
+      <h2>Total Clients</h2>
+      <p id="totalClients">Chargement...</p>
+    </div>
+    <div class="dashboard-card">
+      <h2>Dernières Licenses</h2>
+      <div id="latestLicenses">Chargement...</div>
+    </div>
+    <div class="dashboard-card">
+      <h2>Statuts des Serveurs</h2>
+      <p>Anti-Raid : <span id="statusAnti">...</span></p>
+      <p>Gestion : <span id="statusGestion">...</span></p>
+    </div>
+    <div class="dashboard-card">
+      <h2>👀 Visites</h2>
+      <p id="visitsCount">Chargement...</p>
+    </div>
+  </div>
+</section>
 
+<footer id="footer" class="footer scroll-animate">
+  <div class="container footer-container">
+    <div class="footer-logo">
+      <a href="#">SA Anti-Raid<span style="color: #7f5af0;">.</span></a>
+    </div>
+
+    <nav class="footer-nav scroll-animate">
+      <ul>
+        <li><a href="#">Accueil</a></li>
+        <li><a href="#features">Fonctionnalités</a></li>
+        <li><a href="#pricing">Tarifs</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ul>
+    </nav>
+
+    <div class="footer-social scroll-animate hi" style="font-size: 48px;">
+      <a href="https://discord.gg/synnzo" aria-label="Discord" target="_blank" rel="noopener" style="color: purple; margin-right: 20px;">
+        <i class="fab fa-discord"></i>
+      </a>
+      <a href="https://github.com/AZzuragoty" aria-label="GitHub" target="_blank" rel="noopener" style="color: #333; margin-right: 20px;">
+        <i class="fab fa-github"></i>
+      </a>
+      <a href="https://x.com/zSynnzo" aria-label="Twitter" target="_blank" rel="noopener" style="color: #1DA1F2;">
+        <i class="fab fa-twitter"></i>
+      </a>
+    </div>
+
+    <div class="footer-links">
+      <a href="privacy.html">Politique de confidentialité</a> |
+      <a href="refund.html">Politique de remboursement</a> |
+      <a href="terms.html">Conditions d’utilisation</a> |
+      <a href="legal-notice.html">Mentions légales</a> |
+      <a href="cookies.html">Préférences cookies</a>
+    </div>
+  </div>
+
+  <div class="footer-bottom scroll-animate">
+    <p>© 2025 SA Anti-Raid. Tous droits réservés.</p>
+  </div>
   <script>
-    document.getElementById("login-form").addEventListener("submit", async (e) => {
-      e.preventDefault();
-      const email = document.getElementById("email").value;
+    async function loadVisits() {
+    try {
+      const res = await fetch("/api/visits");
+      const data = await res.json();
+      document.getElementById("visitsCount").textContent = `Il y a eu ${data.totalVisits} visites.`;
+    } catch (err) {
+      console.error("Erreur:", err);
+      document.getElementById("visitsCount").textContent = "Erreur lors du chargement.";
+    }
+  }
+  loadVisits();
+    async function loadStats() {
       try {
-        const res = await fetch(`/api/licenses/${encodeURIComponent(email)}`);
-        const data = await res.json();
-        if (data.success) {
-          document.getElementById("licenses").innerHTML = `
-            <h3>Vos licences :</h3>
-            <ul>
-              ${data.licenses.map(lic => `<li>${lic}</li>`).join('')}
-            </ul>
-          `;
-        } else {
-          document.getElementById("licenses").innerHTML = `<p>${data.message}</p>`;
-        }
+        const [clientsRes, licensesRes] = await Promise.all([
+          fetch("/api/stats/clients"),
+          fetch("/api/stats/licenses")
+        ]);
+        const clientsData = await clientsRes.json();
+        const licensesData = await licensesRes.json();
+
+        document.getElementById("totalClients").textContent = clientsData.total ?? "0";
+
+        const licensesContainer = document.getElementById("latestLicenses");
+        licensesContainer.innerHTML = licensesData.map(c =>
+          `<div>${c.email} - Licenses: ${c.licenses.join(", ")} <small>(${new Date(c.createdAt).toLocaleString()})</small></div>`
+        ).join("");
       } catch (err) {
         console.error(err);
-        document.getElementById("licenses").innerHTML = "<p>Erreur lors de la récupération des licences.</p>";
       }
-    });
+    }
+
+    async function loadStatus() {
+      try {
+        const [antiRes, gestionRes] = await Promise.all([
+          fetch("/api/status/anti"),
+          fetch("/api/status/gestion")
+        ]);
+
+        const antiData = await antiRes.ok ? await antiRes.json() : { online: false };
+        const gestionData = await gestionRes.ok ? await gestionRes.json() : { online: false };
+
+        document.getElementById("statusAnti").innerHTML = antiData.online 
+          ? "<span class='status-online'>✅ En ligne</span>" 
+          : "<span class='status-offline'>❌ Hors ligne</span>";
+
+        document.getElementById("statusGestion").innerHTML = gestionData.online 
+          ? "<span class='status-online'>✅ En ligne</span>" 
+          : "<span class='status-offline'>❌ Hors ligne</span>";
+
+      } catch (err) {
+        console.error(err);
+      }
+    }
+
+    function refresh() {
+      loadStats();
+      loadStatus();
+    }
+
+    refresh();
+    setInterval(refresh, 5000); // refresh toutes les 5 sec
   </script>
+<script src="animations.js"></script>
 </body>
 </html>
