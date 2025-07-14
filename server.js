@@ -50,29 +50,36 @@ const Contact = mongoose.model("Contact", contactSchema);
 
 const visitsFilePath = path.join(__dirname, "visits.json");
 
-// Fonction utilitaire pour lire le compteur
-function getVisits() {
+// Fonction utilitaire pour lire les données complètes
+function getVisitsData() {
   try {
     const data = fs.readFileSync(visitsFilePath, "utf8");
-    return JSON.parse(data).totalVisits || 0;
+    return JSON.parse(data);
   } catch {
-    return 0;
+    return { totalVisits: 0, ips: [] };
   }
 }
 
-// Fonction utilitaire pour sauvegarder le compteur
-function saveVisits(count) {
-  fs.writeFileSync(visitsFilePath, JSON.stringify({ totalVisits: count }, null, 2));
+// Fonction utilitaire pour sauvegarder
+function saveVisitsData(data) {
+  fs.writeFileSync(visitsFilePath, JSON.stringify(data, null, 2));
 }
 
-// Route pour incrémenter et renvoyer le compteur
+// Route pour incrémenter et renvoyer le compteur si IP unique
 app.get("/api/visits", (req, res) => {
-  console.log("GET /api/visits");
-  let count = getVisits();
-  console.log("visits count:", count);
-  count++;
-  saveVisits(count);
-  res.json({ totalVisits: count });
+  const visitsData = getVisitsData();
+  const ip = req.headers['x-forwarded-for']?.split(',')[0].trim() || req.socket.remoteAddress;
+
+  if (!visitsData.ips.includes(ip)) {
+    visitsData.totalVisits++;
+    visitsData.ips.push(ip);
+    saveVisitsData(visitsData);
+    console.log(`✅ Nouvelle visite unique de ${ip}, total: ${visitsData.totalVisits}`);
+  } else {
+    console.log(`ℹ Visite répétée de ${ip}`);
+  }
+
+  res.json({ totalVisits: visitsData.totalVisits });
 });
 
 // Routes API statiques
