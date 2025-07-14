@@ -156,6 +156,19 @@
 
   refresh();
   setInterval(refresh, 5000);
+
+  async function loadVisits() {
+  try {
+    const res = await fetch(`${API_URL}/api/visits`);
+    const data = await res.json();
+    document.getElementById("visitsCount").textContent = 
+      `Visites uniques aujourd'hui: ${data.totalVisits} — Total hits: ${data.totalHits}`;
+  } catch (err) {
+    console.error("Erreur:", err);
+    document.getElementById("visitsCount").textContent = "Erreur lors du chargement.";
+  }
+}
+  loadVisits();
 </script>
 <script src="animations.js"></script>
 </body>
